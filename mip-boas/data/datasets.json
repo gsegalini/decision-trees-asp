@@ -1,0 +1,30 @@
+{
+	"maxsat21": {
+		"path": "data/maxsat-32f.txt",
+		"bin_path": "data/maxsat-32f.txt",
+		"continuous": false,
+		"categorical": false,
+		"binary": true,
+		"classification": "true",
+		"regression": false,
+		"classes": 8,
+		"features": 32,
+		"target_label": "Best",
+        "protected features": [],
+        "categorical features": []
+	},
+	"maxsat22": {
+		"path": "data/maxsat22-32f.txt",
+		"bin_path": "data/maxsat22-32f.txt",
+		"continuous": false,
+		"categorical": false,
+		"binary": true,
+		"classification": "true",
+		"regression": false,
+		"classes": 11,
+		"features": 32,
+		"target_label": "Best",
+        "protected features": [],
+        "categorical features": []
+	}
+}
