@@ -1,9 +1,14 @@
 import subprocess, sys, random
 executable = "STREED"
 
-# data = ["maxsat21-32f", "maxsat22-32f"]
+data = ["maxsat21-32f", 
+        #"maxsat22-32f"
+        ]
 # data = ["maxsat21-32f-3-bins", "maxsat22-32f-3-bins", "maxsat21-32f-5-bins", "maxsat22-32f-5-bins", "maxsat21-32f", "maxsat22-32f"]
-data = ["miplib-2-bins", "miplib-3-bins", "miplib-5-bins"]
+#data = ["miplib-2-bins", 
+        #"miplib-3-bins", 
+        #"miplib-5-bins"
+#        ]
 labels = {"maxsat21-32f" : "8", 
           "maxsat22-32f" : "11", 
           "maxsat21-32f-3-bins" : "8", 
@@ -15,15 +20,15 @@ labels = {"maxsat21-32f" : "8",
           "miplib-5-bins": "532"}
 
 results = {}
-
+folder_prefix = "./{}.txt"
 do_no_bounds = True
 split = "0.1"
 seed = 42 # random.randint(0, 32768)
-tau = 10
-beta = 500
+tau = 0.0
+beta = 0
 mode = "direct"
-min_depth = 1
-max_depth = 2
+min_depth = 6
+max_depth = 7
 for dt in data:
 	# filename_normal = data + "-d{}.txt"
 	print(f"Data: {dt}")
@@ -37,7 +42,7 @@ for dt in data:
 		tmp = subprocess.check_output(
 		["./{}".format(executable),
 		"-task", "algorithm-selection", 
-		"-file", "../streed2/data/alg-sel/{}.txt".format(dt), 
+		"-file", folder_prefix.format(dt), 
 		"-max-depth", "{}".format(d), 
 		"-max-num-nodes", nodes, 
 		"-num-labels", labels[dt], 
@@ -60,7 +65,7 @@ for dt in data:
 			tmp = subprocess.check_output(
 			    ["./{}".format(executable), 
 			    "-task", "algorithm-selection", 
-			    "-file", "../streed2/data/alg-sel/{}.txt".format(dt), 
+			    "-file", folder_prefix.format(dt), 
 			    "-max-depth", "{}".format(d), 
 			    "-max-num-nodes", nodes, 
 			    "-num-labels", labels[dt], 
