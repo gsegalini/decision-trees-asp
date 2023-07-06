@@ -52,6 +52,7 @@ public class Main {
         System.out.println("Num labels: " + set.numlabels());
         set.stats();
         set.subtractBest();
+        set.setN_bins(arg.bins);
         set.binarizeAll(arg.bins);
         set.toCsv();
     }

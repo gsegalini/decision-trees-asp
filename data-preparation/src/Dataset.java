@@ -1,5 +1,3 @@
-import jdk.jshell.execution.Util;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +9,9 @@ public class Dataset {
 
     private final String directory_prefix;
     private final List<Instance> instances = new ArrayList<>();
-    private String filename;
+    private final String filename;
+
+    private int n_bins;
 
     public Dataset(String output) {
         this.filename = output;
@@ -28,7 +28,7 @@ public class Dataset {
     }
 
     public void toCsv() throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + ".txt"));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename() + ".txt"));
         for (Instance inst : this.instances) {
             // if (inst.all0) continue; // skip timed out
             fileWriter.write(inst.toString());
@@ -36,35 +36,7 @@ public class Dataset {
         fileWriter.close();
     }
 
-    public void binarizeFeature(int f_index) throws IOException {
-        double[] values = new double[instances.size()];
-        {
-            int i = 0;
-            for (Instance inst : instances) {
-                values[i++] = inst.features[f_index];
-            }
-        }
-        Arrays.sort(values);
-        double threshold = values[values.length / 2];
-        for (Instance inst : instances) {
-            if (inst.bin_features == null) {
-                inst.bin_features = new double[inst.getN_features()];
-            }
-            inst.bin_features[f_index] = inst.features[f_index] < threshold ? 0.0 : 1.0;
-        }
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + "_info.txt", true));
-        fileWriter.write("feature index: " + f_index + " threshold: " + threshold);
-        fileWriter.newLine();
-        fileWriter.close();
-
-    }
-
-
     public void binarizeFeature(int f_index, int bins) throws IOException {
-        if (bins == 2) {
-            binarizeFeature(f_index);
-            return;
-        }
         int new_features_count = bins - 1;
         double[] values = new double[instances.size()];
         {
@@ -80,8 +52,9 @@ public class Dataset {
         }
         int new_f_index = new_features_count * f_index;
         for (Instance inst : instances) {
-            if (inst.bin_features == null) {
-                inst.bin_features = new double[inst.getN_features() * new_features_count];
+            int length = inst.getN_features() * new_features_count;
+            if (inst.bin_features == null || inst.bin_features.length != length) {
+                inst.bin_features = new double[length];
             }
             for (int delta_i = 0; delta_i < new_features_count; delta_i++) {
                 if (inst.features[f_index] < thresholds[delta_i]) {
@@ -92,7 +65,7 @@ public class Dataset {
             }
         }
 
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + "_info.txt", true));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename() + "_info.txt", true));
         fileWriter.write("feature index: " + f_index + " thresholds: " + Arrays.toString(thresholds));
         fileWriter.newLine();
         fileWriter.close();
@@ -150,5 +123,13 @@ public class Dataset {
         if (!this.instances.remove(instance)) {
             throw new RuntimeException("tried to remove instance that was not there, should not happen");
         }
+    }
+
+    public void setN_bins(int n_bins) {
+        this.n_bins = n_bins;
+    }
+
+    private String filename() {
+        return this.filename + "-" + this.n_bins + "-bins";
     }
 }

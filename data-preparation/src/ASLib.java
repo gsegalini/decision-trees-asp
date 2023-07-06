@@ -7,21 +7,14 @@ public class ASLib {
 
     private static final int[] bin_values = new int[]{2, 3, 5, 7, 10};
     private final String DIRECTORY;
-    private final String runtimes = "algorithm_runs.arff";
-
-    private final String features = "feature_values.arff";
-
-    private final String description = "description.txt";
-
-    private final String features_costs = "feature_costs.arff";
 
     private String metric;
 
-    private Map<String, FeatureStep> steps = new HashMap<>();
+    private final Map<String, FeatureStep> steps = new HashMap<>();
 
-    private List<String> features_in_order = new ArrayList<>();
+    private final List<String> features_in_order = new ArrayList<>();
 
-    private List<Double> features_cost_in_order = new ArrayList<>();
+    private final List<Double> features_cost_in_order = new ArrayList<>();
 
     public ASLib(String DIRECTORY) {
         this.DIRECTORY = DIRECTORY;
@@ -30,6 +23,7 @@ public class ASLib {
     private List<String> readRuntimes(AlgorithmCollection collection, Dataset set) throws IOException {
         List<String> bench_names = new ArrayList<>();
         String strCurrentLine;
+        String runtimes = "algorithm_runs.arff";
         BufferedReader objReader = new BufferedReader(new FileReader(DIRECTORY + "/" + runtimes));
         int id = 0;
         boolean data_started = false;
@@ -38,7 +32,6 @@ public class ASLib {
         while ((strCurrentLine = objReader.readLine()) != null) {
             if (strCurrentLine.startsWith("%")) {
                 // comment
-                continue;
             } else if (data_started) {
 
                 String[] splitted = strCurrentLine.split(",");
@@ -46,8 +39,7 @@ public class ASLib {
                 String alg = splitted[attributes.get("algorithm")];
                 double runtime = Double.parseDouble(splitted[attributes.get(this.metric)]);
                 String status = splitted[attributes.get("runstatus")];
-                if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok"))
-                    runtime *= 10;
+                if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
                 if (!instances.containsKey(inst_name)) {
                     ASLibInstance tmp = new ASLibInstance();
                     tmp.name = inst_name;
@@ -81,8 +73,7 @@ public class ASLib {
     }
 
     private void handleASlib(Dataset set, List<String> instanceNames) throws IOException {
-        int index = 0;
-
+        String features = "feature_values.arff";
         BufferedReader objReader = new BufferedReader(new FileReader(DIRECTORY + "/" + features), 67108864);
         String strCurrentLine;
 
@@ -141,6 +132,7 @@ public class ASLib {
 
     private void readCosts() throws IOException {
 
+        String features_costs = "feature_costs.arff";
         BufferedReader objReader = new BufferedReader(new FileReader(DIRECTORY + "/" + features_costs), 67108864);
         String strCurrentLine;
         boolean data_started = false;
@@ -160,9 +152,7 @@ public class ASLib {
                     // multiple repetitions for stochastic features, for now do nothing
 
                     for (int i = 2; i < splitted.length; i++) {
-                        if (splitted[i].equals("?")) {
-                            // this cost only is ignored
-                        } else {
+                        if (!splitted[i].equals("?")) {
                             double v = Double.parseDouble(splitted[i]);
                             steps.get(i - 2).addCost(v);
                         }
@@ -185,11 +175,12 @@ public class ASLib {
 
 
     private void readDescription() throws IOException {
-        InputStream inputStream = new FileInputStream(new File(DIRECTORY + "/" + description));
+        String description = "description.txt";
+        InputStream inputStream = new FileInputStream(DIRECTORY + "/" + description);
 
         Yaml yaml = new Yaml();
         Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
-        System.out.println(data);;
+        ;
         Map<String, Object> stepsMap = (Map<String, Object>) data.get("feature_steps");
         for (String s : stepsMap.keySet()) {
             FeatureStep step;
@@ -222,44 +213,60 @@ public class ASLib {
     }
 
 
-    public static void readAll(String names_file, int bins) throws IOException {
+    public static void readAll(String names_file) throws IOException {
         BufferedReader objReader = new BufferedReader(new FileReader(names_file), 67108864);
         String strCurrentLine;
 
         while ((strCurrentLine = objReader.readLine()) != null) {
             System.out.println("Doing scenario: " + strCurrentLine);
             ASLib scenario = new ASLib(strCurrentLine);
-            Dataset set = new Dataset(scenario.DIRECTORY, scenario.DIRECTORY + "-" + bins + "-bins");
+            Dataset set = new Dataset(scenario.DIRECTORY, scenario.DIRECTORY);
             AlgorithmCollection collection = new AlgorithmCollection();
 
 
             scenario.readDescription();
 
-            scenario.readCosts();
-
             List<String> names = scenario.readRuntimes(collection, set);
 
             scenario.handleASlib(set, names);
+            boolean costs = false;
+            try {
+                scenario.readCosts();
+                costs = true;
 
-            scenario.makeFeatureCosts();
-
-            scenario.writeFeatureCosts();
-
+            } catch (FileNotFoundException e) {
+                System.out.println("no feature costs, skipping");
+            }
 
             // set.stats();
             set.subtractBest();
-            set.binarizeAll(bins);
-            set.toCsv();
+
+            if (costs) {
+                scenario.makeFeatureCosts();
+            }
+
+            for (int b : bin_values) {
+                if (costs ) scenario.writeFeatureCosts(b);
+                set.setN_bins(b);
+                set.binarizeAll(b);
+                set.toCsv();
+
+            }
 
 
         }
     }
 
-    private void writeFeatureCosts() throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(DIRECTORY + "/" + DIRECTORY + "-costs.txt"));
-        for (double d : this.features_cost_in_order) {
-            fileWriter.write(String.valueOf(d) + System.lineSeparator());
+    private void writeFeatureCosts(int bins) throws IOException {
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(DIRECTORY + "/" + DIRECTORY + "-" + bins + "-bins-costs.txt"));
+        for (int i = 0; i < this.features_cost_in_order.size(); i++) {
+            double d = this.features_cost_in_order.get(i);
+            fileWriter.write((d + System.lineSeparator()).repeat(bins - 2));
+            fileWriter.write(String.valueOf(d));
+            if (i < this.features_cost_in_order.size() - 1)
+                fileWriter.newLine();
         }
+
         fileWriter.close();
     }
 
@@ -275,8 +282,7 @@ public class ASLib {
                     break;
                 }
             }
-            if (step == null)
-                throw new RuntimeException("expected to find step for feature: " + feat_name);
+            if (step == null) throw new RuntimeException("expected to find step for feature: " + feat_name);
 
             double cost = step.recursiveCost();
             this.features_cost_in_order.add(cost);
@@ -284,9 +290,4 @@ public class ASLib {
         }
     }
 
-    public static void readAll(String names_file) throws IOException {
-        for (int b : bin_values) {
-            readAll(names_file, b);
-        }
-    }
 }
