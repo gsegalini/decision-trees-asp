@@ -54,7 +54,7 @@ public abstract class Instance {
         for (double v : runtimes) {
             if (v != v0) return false;
         }
-        System.out.println("removing instance");
+        // System.out.println("removing instance");
         return true;
     }
 
@@ -72,4 +72,6 @@ public abstract class Instance {
     }
 
     public abstract int numFeatures();
+
+
 }

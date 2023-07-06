@@ -9,11 +9,18 @@ import java.util.List;
 
 public class Dataset {
 
+    private final String directory_prefix;
     private final List<Instance> instances = new ArrayList<>();
     private String filename;
 
     public Dataset(String output) {
         this.filename = output;
+        this.directory_prefix = ".";
+    }
+
+    public Dataset(String directory_prefix, String filename) {
+        this.directory_prefix = directory_prefix;
+        this.filename = filename;
     }
 
     public void addInstance(Instance instance) {
@@ -21,7 +28,7 @@ public class Dataset {
     }
 
     public void toCsv() throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(this.filename + ".txt"));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + ".txt"));
         for (Instance inst : this.instances) {
             // if (inst.all0) continue; // skip timed out
             fileWriter.write(inst.toString());
@@ -29,7 +36,6 @@ public class Dataset {
         fileWriter.close();
     }
 
-    // WARNING this actually changes the values!!!!!!!
     public void binarizeFeature(int f_index) throws IOException {
         double[] values = new double[instances.size()];
         {
@@ -46,7 +52,7 @@ public class Dataset {
             }
             inst.bin_features[f_index] = inst.features[f_index] < threshold ? 0.0 : 1.0;
         }
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(this.filename + "_info.txt", true));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + "_info.txt", true));
         fileWriter.write("feature index: " + f_index + " threshold: " + threshold);
         fileWriter.newLine();
         fileWriter.close();
@@ -86,7 +92,7 @@ public class Dataset {
             }
         }
 
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(this.filename + "_info.txt", true));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename + "_info.txt", true));
         fileWriter.write("feature index: " + f_index + " thresholds: " + Arrays.toString(thresholds));
         fileWriter.newLine();
         fileWriter.close();
@@ -127,6 +133,22 @@ public class Dataset {
             double sd = Math.sqrt(Utils.variance(list, null));
             System.out.println("Feature: " + f);
             System.out.println("min: " + min + " max: " + max + " avg: " + mean + " sd: " + sd);
+        }
+    }
+
+    public ASLibInstance getASLibByName(String name) {
+        for (Instance i : this.instances) {
+            if (i instanceof ASLibInstance) {
+                ASLibInstance tmp = (ASLibInstance) i;
+                if (tmp.name.equals(name)) return tmp;
+            }
+        }
+        return null;
+    }
+
+    public void removeInstance(Instance instance) {
+        if (!this.instances.remove(instance)) {
+            throw new RuntimeException("tried to remove instance that was not there, should not happen");
         }
     }
 }

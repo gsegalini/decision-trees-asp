@@ -23,6 +23,10 @@ public class Main {
             case "miplib":
                 benchNames = readRuntimesBoas(arg.input_times, set);
                 break;
+            case "aslib":
+                // this is really different, do it and return
+                ASLib.readAll(arg.input_times);
+                return;
             default:
                 System.out.println("unrecognized problem type: " + arg.type);
                 System.exit(1);
