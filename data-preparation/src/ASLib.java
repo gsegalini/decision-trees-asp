@@ -30,35 +30,35 @@ public class ASLib {
         Map<String, Integer> attributes = new HashMap<>();
         Map<String, ASLibInstance> instances = new HashMap<>();
         while ((strCurrentLine = objReader.readLine()) != null) {
-            if (strCurrentLine.startsWith("%")) {
-                // comment
-            } else if (data_started) {
+            if (!strCurrentLine.startsWith("%")) {
+                if (data_started) {
 
-                String[] splitted = strCurrentLine.split(",");
-                String inst_name = splitted[attributes.get("instance_id")];
-                String alg = splitted[attributes.get("algorithm")];
-                double runtime = Double.parseDouble(splitted[attributes.get(this.metric)]);
-                String status = splitted[attributes.get("runstatus")];
-                if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
-                if (!instances.containsKey(inst_name)) {
-                    ASLibInstance tmp = new ASLibInstance();
-                    tmp.name = inst_name;
-                    instances.put(inst_name, tmp);
-                }
-                ASLibInstance instance = instances.get(inst_name);
-                int alg_id = collection.addAlgorithm(alg);
-                instance.addRuntimeList(alg_id, runtime);
+                    String[] splitted = strCurrentLine.split(",");
+                    String inst_name = splitted[attributes.get("instance_id")];
+                    String alg = splitted[attributes.get("algorithm")];
+                    double runtime = Double.parseDouble(splitted[attributes.get(this.metric)]);
+                    String status = splitted[attributes.get("runstatus")];
+                    if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
+                    if (!instances.containsKey(inst_name)) {
+                        ASLibInstance tmp = new ASLibInstance();
+                        tmp.name = inst_name;
+                        instances.put(inst_name, tmp);
+                    }
+                    ASLibInstance instance = instances.get(inst_name);
+                    int alg_id = collection.addAlgorithm(alg);
+                    instance.addRuntimeList(alg_id, runtime);
 
-            } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
-                // save all attributes
-                String[] splitted = strCurrentLine.split("\\s+");
-                String name = splitted[1];
-                attributes.put(name, id++);
-                if (name.equals("runtime") || name.equalsIgnoreCase("PAR10")) {
-                    this.metric = name;
+                } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
+                    // save all attributes
+                    String[] splitted = strCurrentLine.split("\\s+");
+                    String name = splitted[1];
+                    attributes.put(name, id++);
+                    if (name.equals("runtime") || name.equalsIgnoreCase("PAR10")) {
+                        this.metric = name;
+                    }
+                } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
+                    data_started = true;
                 }
-            } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
-                data_started = true;
             }
         }
 
@@ -82,47 +82,47 @@ public class ASLib {
         int id = 0;
         while ((strCurrentLine = objReader.readLine()) != null) {
 
-            if (strCurrentLine.startsWith("%")) {
-                // comment
-            } else if (data_started) {
-                String[] splitted = strCurrentLine.split(",");
-                String inst_name = splitted[attributes.get("instance_id")];
-                int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
-                // System.out.println("starting instance " + index + " " + inst_name);
+            if (!strCurrentLine.startsWith("%")) {
+                if (data_started) {
+                    String[] splitted = strCurrentLine.split(",");
+                    String inst_name = splitted[attributes.get("instance_id")];
+                    int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
+                    // System.out.println("starting instance " + index + " " + inst_name);
 
-                if (!instanceNames.contains(inst_name)) {
-                    // System.out.println("skipping instance " + splitted[0]);
-                    continue;
-                }
+                    if (!instanceNames.contains(inst_name)) {
+                        // System.out.println("skipping instance " + splitted[0]);
+                        continue;
+                    }
 
-                // extract features and add them. NOT BINARIZED YET
-                ASLibInstance instance = set.getASLibByName(inst_name);
-                if (repetition <= 1) {
-                    // multiple repetitions for stochastic features, for now do nothing
-                    instance.features = new double[splitted.length - 2];
+                    // extract features and add them. NOT BINARIZED YET
+                    ASLibInstance instance = set.getASLibByName(inst_name);
+                    if (repetition <= 1) {
+                        // multiple repetitions for stochastic features, for now do nothing
+                        instance.features = new double[splitted.length - 2];
 
 
-                    for (int i = 2; i < splitted.length; i++) {
-                        if (splitted[i].equals("?")) {
-                            // remove this instance
-                            set.removeInstance(instance);
-                            break;
+                        for (int i = 2; i < splitted.length; i++) {
+                            if (splitted[i].equals("?")) {
+                                // remove this instance
+                                set.removeInstance(instance);
+                                break;
 
-                        } else {
-                            double v = Double.parseDouble(splitted[i]);
-                            instance.addFeature(v);
+                            } else {
+                                double v = Double.parseDouble(splitted[i]);
+                                instance.addFeature(v);
+                            }
                         }
                     }
+                } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
+                    String[] splitted = strCurrentLine.split("\\s+");
+                    String name = splitted[1];
+                    attributes.put(name, id++);
+                    if (!name.equalsIgnoreCase("instance_id") && !name.equalsIgnoreCase("repetition")) {
+                        features_in_order.add(name);
+                    }
+                } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
+                    data_started = true;
                 }
-            } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
-                String[] splitted = strCurrentLine.split("\\s+");
-                String name = splitted[1];
-                attributes.put(name, id++);
-                if (!name.equalsIgnoreCase("instance_id") && !name.equalsIgnoreCase("repetition")) {
-                    features_in_order.add(name);
-                }
-            } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
-                data_started = true;
             }
 
         }
@@ -142,32 +142,32 @@ public class ASLib {
 
         while ((strCurrentLine = objReader.readLine()) != null) {
 
-            if (strCurrentLine.startsWith("%")) {
-                // comment
-            } else if (data_started) {
-                String[] splitted = strCurrentLine.split(",");
-                int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
+            if (!strCurrentLine.startsWith("%")) {
+                if (data_started) {
+                    String[] splitted = strCurrentLine.split(",");
+                    int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
 
-                if (repetition <= 1) {
-                    // multiple repetitions for stochastic features, for now do nothing
+                    if (repetition <= 1) {
+                        // multiple repetitions for stochastic features, for now do nothing
 
-                    for (int i = 2; i < splitted.length; i++) {
-                        if (!splitted[i].equals("?")) {
-                            double v = Double.parseDouble(splitted[i]);
-                            steps.get(i - 2).addCost(v);
+                        for (int i = 2; i < splitted.length; i++) {
+                            if (!splitted[i].equals("?")) {
+                                double v = Double.parseDouble(splitted[i]);
+                                steps.get(i - 2).addCost(v);
+                            }
                         }
                     }
+                } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
+                    String[] splitted = strCurrentLine.split("\\s+");
+                    String name = splitted[1];
+                    attributes.put(name, id++);
+                    if (!name.equalsIgnoreCase("instance_id") && !name.equalsIgnoreCase("repetition")) {
+                        // this is a step
+                        steps.add(this.steps.get(name));
+                    }
+                } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
+                    data_started = true;
                 }
-            } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
-                String[] splitted = strCurrentLine.split("\\s+");
-                String name = splitted[1];
-                attributes.put(name, id++);
-                if (!name.equalsIgnoreCase("instance_id") && !name.equalsIgnoreCase("repetition")) {
-                    // this is a step
-                    steps.add(this.steps.get(name));
-                }
-            } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
-                data_started = true;
             }
         }
         System.out.println("completed reading costs");
@@ -180,7 +180,7 @@ public class ASLib {
 
         Yaml yaml = new Yaml();
         Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
-        ;
+
         Map<String, Object> stepsMap = (Map<String, Object>) data.get("feature_steps");
         for (String s : stepsMap.keySet()) {
             FeatureStep step;

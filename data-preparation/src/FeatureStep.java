@@ -14,12 +14,6 @@ public class FeatureStep {
 
     Double avg_cost = null;
 
-    public FeatureStep(String name, List<FeatureStep> requires, List<String> provides) {
-        this.name = name;
-        this.requires = requires;
-        this.provides = provides;
-    }
-
     public void addRequirement(FeatureStep requirement) {
         this.requires.add(requirement);
     }

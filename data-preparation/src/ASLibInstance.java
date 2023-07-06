@@ -12,11 +12,8 @@ public class ASLibInstance extends Instance {
     private int num_features;
     public String name;
 
-    private List<Double> runtimes_list;
+    private final List<Double> runtimes_list;
 
-    public ASLibInstance(int n_runtimes) {
-        this.runtimes = new double[n_runtimes];
-    }
     public ASLibInstance() {
         runtimes_list = new ArrayList<>();
     } // create empty instance

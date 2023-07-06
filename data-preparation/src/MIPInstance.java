@@ -13,10 +13,6 @@ public class MIPInstance extends Instance {
     public final static int NUM_FEATURES = 37;
 
     public String name;
-    public MIPInstance(int n_runtimes) {
-        this.runtimes = new double[n_runtimes];
-        this.features = new double[NUM_FEATURES];
-    }
 
     @Override
     public int numFeatures() {

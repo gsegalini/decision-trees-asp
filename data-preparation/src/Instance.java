@@ -1,5 +1,3 @@
-import java.util.List;
-
 public abstract class Instance {
 
     protected double[] runtimes;
@@ -20,10 +18,6 @@ public abstract class Instance {
         }
     }
 
-    public void addFeature(int f_index, double value) {
-        this.features[f_index] = value;
-        ++n_features;
-    }
 
     public void addFeature(double value) {
         this.features[n_features++] = value;
