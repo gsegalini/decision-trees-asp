@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-public class FeatureStep {
+public class FeatureStep implements Comparable<FeatureStep>{
 
     String name;
+
+    int id;
 
     List<FeatureStep> requires = new ArrayList<>();
 
@@ -12,14 +15,15 @@ public class FeatureStep {
 
     List<Double> costs = new ArrayList<>();
 
-    Double avg_cost = null;
+    private Double avg_cost = null;
 
     public void addRequirement(FeatureStep requirement) {
         this.requires.add(requirement);
     }
 
-    public FeatureStep(String name) {
+    public FeatureStep(String name, int id) {
         this.name = name;
+        this.id = id;
     }
 
     @Override
@@ -57,5 +61,15 @@ public class FeatureStep {
             cost += parent.recursiveCost();
         }
         return cost;
+    }
+
+
+    @Override
+    public int compareTo(FeatureStep featureStep) {
+        return Integer.compare(this.id, featureStep.id);
+    }
+
+    public List<Integer> requirementsIds() {
+        return this.requires.stream().mapToInt(i -> i.id).boxed().collect(Collectors.toList());
     }
 }

@@ -14,7 +14,8 @@ public class ASLib {
 
     private final List<String> features_in_order = new ArrayList<>();
 
-    private final List<Double> features_cost_in_order = new ArrayList<>();
+    private final Map<String, FeatureStep> feature_to_step = new HashMap<>();
+
 
     public ASLib(String DIRECTORY) {
         this.DIRECTORY = DIRECTORY;
@@ -181,11 +182,13 @@ public class ASLib {
         Yaml yaml = new Yaml();
         Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
 
+        int step_id = 0;
+
         Map<String, Object> stepsMap = (Map<String, Object>) data.get("feature_steps");
         for (String s : stepsMap.keySet()) {
             FeatureStep step;
             if (!this.steps.containsKey(s)) {
-                step = new FeatureStep(s);
+                step = new FeatureStep(s, step_id++);
                 this.steps.put(s, step);
             } else {
                 step = this.steps.get(s);
@@ -200,7 +203,7 @@ public class ASLib {
             for (String r_key : requires) {
                 FeatureStep requirement;
                 if (!this.steps.containsKey(r_key)) {
-                    requirement = new FeatureStep(r_key);
+                    requirement = new FeatureStep(r_key, step_id++);
                     this.steps.put(r_key, requirement);
                 } else {
                     requirement = this.steps.get(r_key);
@@ -241,12 +244,8 @@ public class ASLib {
             // set.stats();
             set.subtractBest();
 
-            if (costs) {
-                scenario.makeFeatureCosts();
-            }
-
             for (int b : bin_values) {
-                if (costs ) scenario.writeFeatureCosts(b);
+                if (costs) scenario.writeFeatureCosts(b);
                 set.setN_bins(b);
                 set.binarizeAll(b);
                 set.toCsv();
@@ -259,35 +258,54 @@ public class ASLib {
 
     private void writeFeatureCosts(int bins) throws IOException {
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(DIRECTORY + "/" + DIRECTORY + "-" + bins + "-bins-costs.txt"));
-        for (int i = 0; i < this.features_cost_in_order.size(); i++) {
-            double d = this.features_cost_in_order.get(i);
-            fileWriter.write((d + System.lineSeparator()).repeat(bins - 2));
-            fileWriter.write(String.valueOf(d));
-            if (i < this.features_cost_in_order.size() - 1)
-                fileWriter.newLine();
+        List<FeatureStep> sorted_steps = new ArrayList<>(steps.values());
+        sorted_steps.sort(FeatureStep::compareTo);
+
+        // create map feature to step
+
+        for (String f : features_in_order) {
+            for (FeatureStep s : steps.values()) {
+                if (s.provides.contains(f)) {
+                    feature_to_step.put(f, s);
+                }
+            }
+        }
+
+        // first number of steps
+        fileWriter.write(String.valueOf(sorted_steps.size()));
+        fileWriter.newLine();
+
+        // then for each step get prerequisites
+
+        for (FeatureStep s : sorted_steps) {
+            fileWriter.write(String.valueOf(s.id));
+            fileWriter.write(" ");
+            List<Integer> reqs = s.requirementsIds();
+            for (int i = 0; i < reqs.size(); i++) {
+                fileWriter.write(String.valueOf(reqs.get(i)));
+                if (i != reqs.size() - 1) fileWriter.write(" ");
+            }
+            fileWriter.newLine();
+        }
+
+        // one line per step, containing cost
+        for (FeatureStep s : sorted_steps) {
+            fileWriter.write(String.valueOf(s.getAverageCost()));
+            fileWriter.newLine();
+        }
+        // one line per feature, containing step
+        for (int i = 0; i < features_in_order.size(); i++) {
+            String f = features_in_order.get(i);
+            FeatureStep step = feature_to_step.get(f);
+            assert step != null;
+            for (int j = 0; j < bins - 1; j++) {
+                fileWriter.write(String.valueOf(step.id));
+                if (j != bins - 1 || i != features_in_order.size() - 1) fileWriter.newLine();
+            }
         }
 
         fileWriter.close();
     }
 
-    private void makeFeatureCosts() {
-        // go through features in order
-
-        for (String feat_name : this.features_in_order) {
-            FeatureStep step = null;
-
-            for (FeatureStep tmp : this.steps.values()) {
-                if (tmp.provides.contains(feat_name)) {
-                    step = tmp;
-                    break;
-                }
-            }
-            if (step == null) throw new RuntimeException("expected to find step for feature: " + feat_name);
-
-            double cost = step.recursiveCost();
-            this.features_cost_in_order.add(cost);
-
-        }
-    }
 
 }
