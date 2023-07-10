@@ -1,9 +1,8 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Dataset {
 
@@ -11,7 +10,12 @@ public class Dataset {
     private final List<Instance> instances = new ArrayList<>();
     private final String filename;
 
+    private Set<String> filter;
+
+    private boolean whitelist = false;
     private int n_bins;
+
+    private int cv;
 
     public Dataset(String output) {
         this.filename = output;
@@ -28,9 +32,16 @@ public class Dataset {
     }
 
     public void toCsv() throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename() + ".txt"));
+        String prefix = this.whitelist ? "-test" : "";
+        File file = new File(this.directory() + this.filename() + prefix + ".txt");
+        file.getParentFile().mkdirs();
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
         for (Instance inst : this.instances) {
-            // if (inst.all0) continue; // skip timed out
+            if (filter != null && inst instanceof ASLibInstance) {
+                ASLibInstance tmp = (ASLibInstance) inst;
+                boolean in = filter.contains(tmp.name);
+                if (whitelist ^ in) continue;
+            }
             fileWriter.write(inst.toString());
         }
         fileWriter.close();
@@ -64,8 +75,9 @@ public class Dataset {
                 }
             }
         }
-
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(directory_prefix + "/" + this.filename() + "_info.txt", true));
+        File file = new File(this.directory() + this.filename() + "_info.txt");
+        file.getParentFile().mkdirs();
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
         fileWriter.write("feature index: " + f_index + " thresholds: " + Arrays.toString(thresholds));
         fileWriter.newLine();
         fileWriter.close();
@@ -131,5 +143,25 @@ public class Dataset {
 
     private String filename() {
         return this.filename + "-" + this.n_bins + "-bins";
+    }
+
+    private String directory() {
+        return this.directory_prefix + "/" + this.n_bins + "-bins/" + this.cv + "-cv/";
+    }
+
+    public void setCv(int cv) {
+        this.cv = cv;
+    }
+
+    public void toCsv(List<String> test_instances) throws IOException {
+        // set filter to train, write
+
+        this.filter = new HashSet<>(test_instances);
+        this.whitelist = false;
+        this.toCsv();
+        // set filter to test, write
+        this.whitelist = true;
+        this.toCsv();
+
     }
 }

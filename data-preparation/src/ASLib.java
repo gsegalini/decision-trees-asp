@@ -16,6 +16,8 @@ public class ASLib {
 
     private final Map<String, FeatureStep> feature_to_step = new HashMap<>();
 
+    private final Map<Integer, List<String>> fold_to_instances = new HashMap<>();
+
 
     public ASLib(String DIRECTORY) {
         this.DIRECTORY = DIRECTORY;
@@ -216,48 +218,10 @@ public class ASLib {
     }
 
 
-    public static void readAll(String names_file) throws IOException {
-        BufferedReader objReader = new BufferedReader(new FileReader(names_file), 67108864);
-        String strCurrentLine;
-
-        while ((strCurrentLine = objReader.readLine()) != null) {
-            System.out.println("Doing scenario: " + strCurrentLine);
-            ASLib scenario = new ASLib(strCurrentLine);
-            Dataset set = new Dataset(scenario.DIRECTORY, scenario.DIRECTORY);
-            AlgorithmCollection collection = new AlgorithmCollection();
-
-
-            scenario.readDescription();
-
-            List<String> names = scenario.readRuntimes(collection, set);
-
-            scenario.handleASlib(set, names);
-            boolean costs = false;
-            try {
-                scenario.readCosts();
-                costs = true;
-
-            } catch (FileNotFoundException e) {
-                System.out.println("no feature costs, skipping");
-            }
-
-            // set.stats();
-            set.subtractBest();
-
-            for (int b : bin_values) {
-                if (costs) scenario.writeFeatureCosts(b);
-                set.setN_bins(b);
-                set.binarizeAll(b);
-                set.toCsv();
-
-            }
-
-
-        }
-    }
-
     private void writeFeatureCosts(int bins) throws IOException {
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(DIRECTORY + "/" + DIRECTORY + "-" + bins + "-bins-costs.txt"));
+        File file = new File(DIRECTORY + "/" + bins + "-bins/" + DIRECTORY + "-" + bins + "-bins-costs.txt");
+        file.getParentFile().mkdirs();
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
         List<FeatureStep> sorted_steps = new ArrayList<>(steps.values());
         sorted_steps.sort(FeatureStep::compareTo);
 
@@ -305,6 +269,90 @@ public class ASLib {
         }
 
         fileWriter.close();
+    }
+
+
+    private void readCV() throws IOException {
+        BufferedReader objReader = new BufferedReader(new FileReader(DIRECTORY + "/" + "cv.arff"), 67108864);
+        String strCurrentLine;
+        boolean data_started = false;
+        Map<String, Integer> attributes = new HashMap<>();
+        int id = 0;
+        while ((strCurrentLine = objReader.readLine()) != null) {
+
+            if (!strCurrentLine.startsWith("%")) {
+                if (data_started) {
+                    String[] splitted = strCurrentLine.split(",");
+                    int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
+                    String name = splitted[attributes.get("instance_id")];
+                    int fold = Integer.parseInt(splitted[attributes.get("fold")]);
+
+                    if (repetition < 2) {
+
+                        if (!fold_to_instances.containsKey(fold)) {
+                            fold_to_instances.put(fold, new ArrayList<>());
+                        }
+                        List<String> instances = fold_to_instances.get(fold);
+                        instances.add(name);
+                    }
+                } else if (strCurrentLine.toUpperCase().startsWith("@ATTRIBUTE")) {
+                    String[] splitted = strCurrentLine.split("\\s+");
+                    String name = splitted[1];
+                    attributes.put(name, id++);
+
+                } else if (strCurrentLine.toUpperCase().startsWith("@DATA")) {
+                    data_started = true;
+                }
+            }
+        }
+
+    }
+
+
+
+    public static void readAll(String names_file) throws IOException {
+        BufferedReader objReader = new BufferedReader(new FileReader(names_file), 67108864);
+        String strCurrentLine;
+
+        while ((strCurrentLine = objReader.readLine()) != null) {
+            System.out.println("Doing scenario: " + strCurrentLine);
+            ASLib scenario = new ASLib(strCurrentLine);
+            Dataset set = new Dataset(scenario.DIRECTORY, scenario.DIRECTORY);
+            AlgorithmCollection collection = new AlgorithmCollection();
+
+            scenario.readDescription();
+
+            List<String> names = scenario.readRuntimes(collection, set);
+
+            scenario.readCV();
+
+            scenario.handleASlib(set, names);
+            boolean costs = false;
+            try {
+                scenario.readCosts();
+                costs = true;
+
+            } catch (FileNotFoundException e) {
+                System.out.println("no feature costs, skipping");
+            }
+
+            // set.stats();
+            set.subtractBest();
+
+            for (int b : bin_values) {
+                if (costs) scenario.writeFeatureCosts(b);
+                set.setN_bins(b);
+                for (int cv : scenario.fold_to_instances.keySet()) {
+                    set.setCv(cv);
+                    set.binarizeAll(b);
+                    set.toCsv(scenario.fold_to_instances.get(cv));
+                    //set.toCsv();
+                }
+
+            }
+
+
+        }
     }
 
 
