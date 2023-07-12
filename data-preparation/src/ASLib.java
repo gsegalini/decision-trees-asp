@@ -41,7 +41,7 @@ public class ASLib {
                     String alg = splitted[attributes.get("algorithm")];
                     double runtime = Double.parseDouble(splitted[attributes.get(this.metric)]);
                     String status = splitted[attributes.get("runstatus")];
-                    if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
+                    // if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
                     if (!instances.containsKey(inst_name)) {
                         ASLibInstance tmp = new ASLibInstance();
                         tmp.name = inst_name;
