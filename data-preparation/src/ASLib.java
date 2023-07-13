@@ -1,7 +1,10 @@
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ASLib {
 
@@ -18,6 +21,9 @@ public class ASLib {
 
     private final Map<Integer, List<String>> fold_to_instances = new HashMap<>();
 
+    public static final List<String> to_subdivide_instances = List.of("ASP-POTASSCO");
+    public static final List<String> to_subdivide_features = List.of("ASP-POTASSCO");
+    public static final List<String> to_subdivide_labels = List.of("SAT18-EXP");
 
     public ASLib(String DIRECTORY) {
         this.DIRECTORY = DIRECTORY;
@@ -182,7 +188,7 @@ public class ASLib {
         InputStream inputStream = new FileInputStream(DIRECTORY + "/" + description);
 
         Yaml yaml = new Yaml();
-        Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
+        Map<String, Object> data = yaml.load(inputStream);
 
         int step_id = 0;
 
@@ -309,7 +315,6 @@ public class ASLib {
     }
 
 
-
     public static void readAll(String names_file) throws IOException {
         BufferedReader objReader = new BufferedReader(new FileReader(names_file), 67108864);
         String strCurrentLine;
@@ -342,13 +347,23 @@ public class ASLib {
             for (int b : bin_values) {
                 if (costs) scenario.writeFeatureCosts(b);
                 set.setN_bins(b);
+                set.binarizeAll(b);
+                //set.toCsv();
+                if (to_subdivide_instances.contains(scenario.DIRECTORY)) {
+                    set.instancesSubsetsCSV();
+                }
+                if (to_subdivide_features.contains(scenario.DIRECTORY)) {
+                    set.featuresSubsetsCSV();
+                }
+                if (to_subdivide_labels.contains(scenario.DIRECTORY)) {
+                    set.labelsSubsetCSV();
+                }
                 for (int cv : scenario.fold_to_instances.keySet()) {
                     set.setCv(cv);
-                    set.binarizeAll(b);
                     set.toCsv(scenario.fold_to_instances.get(cv));
-                    //set.toCsv();
-                }
 
+                }
+                set.setCv(0);
             }
 
 

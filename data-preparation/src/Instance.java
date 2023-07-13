@@ -1,4 +1,6 @@
-public abstract class Instance {
+import java.util.Arrays;
+
+public abstract class Instance implements Cloneable{
 
     protected double[] runtimes;
 
@@ -23,7 +25,9 @@ public abstract class Instance {
         this.features[n_features++] = value;
     }
 
-    public String toString() {
+
+    public String toString(int features_amount) {
+        if (features_amount <= 0) features_amount = this.n_features;
         StringBuilder builder = new StringBuilder();
         builder.append(best_alg);
         // extra data
@@ -34,12 +38,15 @@ public abstract class Instance {
         if (bin_features == null) {
             throw new RuntimeException("features were not binarized");
         }
-        for (Double d : bin_features) {
+        for (int i = 0; i < features_amount; i++) {
+            double d = this.bin_features[i];
             builder.append(" ");
-            builder.append(d.intValue());
+            builder.append((int) d);
         }
         builder.append("\n");
         return builder.toString();
+
+
     }
 
     public boolean allTimeouts() {
@@ -66,6 +73,39 @@ public abstract class Instance {
     }
 
     public abstract int numFeatures();
+
+
+    public void remakeRuntimes(int amount) {
+        this.runtimes = Arrays.copyOf(this.runtimes, amount);
+        this.subtractBest();
+        this.setBest();
+
+
+    }
+
+    private void setBest() {
+        double min = Double.MAX_VALUE;
+        for (int i = 0; i < this.runtimes.length; i++) {
+            if (this.runtimes[i] < min) {
+                min = this.runtimes[i];
+                this.best_alg = i;
+            }
+        }
+
+    }
+
+    @Override
+    public Instance clone() {
+        try {
+            Instance clone = (Instance) super.clone();
+            clone.runtimes = Arrays.copyOf(this.runtimes, this.runtimes.length);
+            clone.features = Arrays.copyOf(this.features, this.features.length);
+            clone.bin_features = Arrays.copyOf(this.bin_features, this.bin_features.length);
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 
 
 }

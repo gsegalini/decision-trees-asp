@@ -4,10 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class Dataset {
+public class Dataset implements Cloneable{
 
     private final String directory_prefix;
-    private final List<Instance> instances = new ArrayList<>();
+    private List<Instance> instances = new ArrayList<>();
     private final String filename;
 
     private Set<String> filter;
@@ -16,6 +16,12 @@ public class Dataset {
     private int n_bins;
 
     private int cv;
+
+    private int amount = -1;
+
+    private int features_amount = -1;
+
+    private int labels_amount = -1;
 
     public Dataset(String output) {
         this.filename = output;
@@ -33,17 +39,34 @@ public class Dataset {
 
     public void toCsv() throws IOException {
         String prefix = this.whitelist ? "-test" : "";
+
+        if (this.amount > 0) {
+            prefix = "-" + this.amount + "-size";
+        }
+        else if (this.features_amount > 0) {
+            prefix = "-" + this.features_amount + "-features";
+        }
+
+        else if (this.labels_amount > 0) {
+            prefix = "-" + this.labels_amount + "-labels";
+        }
+
         File file = new File(this.directory() + this.filename() + prefix + ".txt");
         file.getParentFile().mkdirs();
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
+        int count = 0;
+
         for (Instance inst : this.instances) {
+            if (amount > 0 && count >= amount) break;
             if (filter != null && inst instanceof ASLibInstance) {
                 ASLibInstance tmp = (ASLibInstance) inst;
                 boolean in = filter.contains(tmp.name);
                 if (whitelist ^ in) continue;
             }
-            fileWriter.write(inst.toString());
+            fileWriter.write(inst.toString(this.features_amount));
+            count++;
         }
+
         fileWriter.close();
     }
 
@@ -146,7 +169,17 @@ public class Dataset {
     }
 
     private String directory() {
-        return this.directory_prefix + "/" + this.n_bins + "-bins/" + this.cv + "-cv/";
+        String p1 = this.directory_prefix + "/" + this.n_bins + "-bins/";
+        if (this.cv > 0)
+            return p1 + this.cv + "-cv/";
+        else if (this.amount > 0)
+            return p1 + "subset-instances/";
+        else if (this.features_amount > 0)
+            return p1 + "subset-features/";
+        else if (this.labels_amount > 0)
+            return p1 + "subset-labels/";
+        else
+            return p1;
     }
 
     public void setCv(int cv) {
@@ -163,5 +196,71 @@ public class Dataset {
         this.whitelist = true;
         this.toCsv();
 
+        this.whitelist = false; // reset to original
+
+    }
+
+    public void instancesSubsetsCSV() throws IOException {
+        int size = this.instances.size();
+        for (int a = size / 10; a < size; a += size / 10) {
+            this.amount = a;
+            this.toCsv();
+        }
+        this.amount = size;
+        this.toCsv();
+        this.amount = -1;
+
+    }
+
+    public void featuresSubsetsCSV() throws IOException {
+        int feature_size = this.instances.get(0).getN_features();
+        for (int f = feature_size / 10; f < feature_size; f += feature_size / 10) {
+            this.features_amount = f;
+            this.toCsv();
+        }
+        this.features_amount = feature_size;
+        this.toCsv();
+        this.features_amount = -1;
+
+    }
+
+    // this one is a pain
+    public void labelsSubsetCSV() throws IOException {
+
+        int n_labels = this.instances.get(0).runtimes.length;
+        Dataset clone = this.clone();
+
+        for (int n = n_labels / 10; n < n_labels; n += n_labels / 10 ) {
+            // rewrite all instances to only use n labels
+            assert clone != null;
+            for (Instance i : clone.instances) {
+                i.remakeRuntimes(n);
+            }
+            clone.labels_amount = n;
+            clone.toCsv();
+            clone.instances = new ArrayList<>();
+            for (Instance i : this.instances) {
+                clone.instances.add(i.clone());
+            }
+        }
+        this.labels_amount = n_labels;
+        this.toCsv();
+        this.labels_amount = -1;
+
+    }
+
+    @Override
+    public Dataset clone() {
+        try {
+            Dataset clone = (Dataset) super.clone();
+            clone.instances = new ArrayList<>();
+            for (int i = 0; i < this.instances.size(); i++) {
+                Instance inst = this.instances.get(i);
+                clone.instances.add(inst.clone());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
