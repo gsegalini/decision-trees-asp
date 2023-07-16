@@ -20,9 +20,9 @@ compute_models <- function(name) {
 
 print_info <- function(data, folds, model, name) {
 	
-	s = paste(name, mean(misclassificationPenalties(data, vbs)), sep=",")
-	s = paste(s, mean(misclassificationPenalties(folds, model)), sep=",")
-	return(paste(s, mean(misclassificationPenalties(data, singleBest)), sep=","))
+	s = paste(name, sum(misclassificationPenalties(data, vbs)), sep=",")
+	s = paste(s, sum(misclassificationPenalties(folds, model)), sep=",")
+	return(paste(s, sum(misclassificationPenalties(data, singleBest)), sep=","))
 
 }
 
