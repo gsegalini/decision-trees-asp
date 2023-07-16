@@ -49,10 +49,11 @@ public class Main {
                 break;
         }
         System.out.println("Writing to file: " + arg.output);
-        System.out.println("Num labels: " + set.numlabels());
+        System.out.println("Num labels: " + set.numLabels());
         set.stats();
         set.subtractBest();
         set.setN_bins(arg.bins);
+        set.writeStats();
         set.binarizeAll(arg.bins);
         set.toCsv();
     }

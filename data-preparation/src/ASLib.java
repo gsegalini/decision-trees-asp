@@ -78,6 +78,7 @@ public class ASLib {
                 set.addInstance(instance);
             }
         }
+
         return bench_names;
     }
 
@@ -347,7 +348,9 @@ public class ASLib {
             for (int b : bin_values) {
                 if (costs) scenario.writeFeatureCosts(b);
                 set.setN_bins(b);
+                set.writeStats();
                 set.binarizeAll(b);
+
                 //set.toCsv();
                 if (to_subdivide_instances.contains(scenario.DIRECTORY)) {
                     set.instancesSubsetsCSV();

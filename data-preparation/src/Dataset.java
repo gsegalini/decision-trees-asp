@@ -110,7 +110,7 @@ public class Dataset implements Cloneable{
         return instances.get(index);
     }
 
-    public int numlabels() {
+    public int numLabels() {
         return this.instances.get(0).runtimes.length;
     }
 
@@ -262,5 +262,15 @@ public class Dataset implements Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public void writeStats() throws IOException {
+
+        File file = new File(this.directory() + this.filename() + "_info.txt");
+        file.getParentFile().mkdirs();
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
+        fileWriter.write("Num labels: " + this.numLabels());
+        fileWriter.newLine();
+        fileWriter.close();
     }
 }
