@@ -27,7 +27,7 @@ public abstract class Instance implements Cloneable{
 
 
     public String toString(int features_amount) {
-        if (features_amount <= 0) features_amount = this.n_features;
+        if (features_amount <= 0) features_amount = this.bin_features.length;
         StringBuilder builder = new StringBuilder();
         builder.append(best_alg);
         // extra data
