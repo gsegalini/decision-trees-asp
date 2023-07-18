@@ -271,7 +271,7 @@ public class Dataset implements Cloneable {
         fileWriter.close();
     }
 
-    public void removeSames() {
+    public List<Integer> removeSames() {
         // for each feature
         // get values of feature over each instance
         // if 2 are the same, remove one, remake bin_features
@@ -300,7 +300,7 @@ public class Dataset implements Cloneable {
             }
         }
 
-        if (to_remove.isEmpty()) return;
+        if (to_remove.isEmpty()) return to_remove;
         System.out.println("removing " + to_remove.size() + " features");
 
         for (Instance i : instances) {
@@ -312,6 +312,8 @@ public class Dataset implements Cloneable {
             }
             i.bin_features = bin_f;
         }
+
+        return to_remove;
 
     }
 }

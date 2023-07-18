@@ -225,7 +225,7 @@ public class ASLib {
     }
 
 
-    private void writeFeatureCosts(int bins) throws IOException {
+    private void writeFeatureCosts(int bins, List<Integer> removed) throws IOException {
         File file = new File(DIRECTORY + "/" + bins + "-bins/" + DIRECTORY + "-" + bins + "-bins-costs.txt");
         file.getParentFile().mkdirs();
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
@@ -265,11 +265,14 @@ public class ASLib {
             fileWriter.newLine();
         }
         // one line per feature, containing step
+        // keep track of index written to remove useless features
+        int idx = 0;
         for (int i = 0; i < features_in_order.size(); i++) {
             String f = features_in_order.get(i);
             FeatureStep step = feature_to_step.get(f);
             assert step != null;
             for (int j = 0; j < bins - 1; j++) {
+                if (removed.contains(idx++)) continue;
                 fileWriter.write(String.valueOf(step.id));
                 if (j != bins - 1 || i != features_in_order.size() - 1) fileWriter.newLine();
             }
@@ -346,11 +349,12 @@ public class ASLib {
             set.subtractBest();
 
             for (int b : bin_values) {
-                if (costs) scenario.writeFeatureCosts(b);
                 set.setN_bins(b);
                 set.writeStats();
                 set.binarizeAll(b);
-                set.removeSames();
+                List<Integer> removed = set.removeSames();
+                if (costs) scenario.writeFeatureCosts(b, removed);
+
 
                 //set.toCsv();
                 if (to_subdivide_instances.contains(scenario.DIRECTORY)) {
