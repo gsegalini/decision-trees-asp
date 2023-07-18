@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class Dataset implements Cloneable{
+public class Dataset implements Cloneable {
 
     private final String directory_prefix;
     private List<Instance> instances = new ArrayList<>();
@@ -42,12 +42,9 @@ public class Dataset implements Cloneable{
 
         if (this.amount > 0) {
             prefix = "-" + this.amount + "-size";
-        }
-        else if (this.features_amount > 0) {
+        } else if (this.features_amount > 0) {
             prefix = "-" + this.features_amount + "-features";
-        }
-
-        else if (this.labels_amount > 0) {
+        } else if (this.labels_amount > 0) {
             prefix = "-" + this.labels_amount + "-labels";
         }
 
@@ -213,7 +210,7 @@ public class Dataset implements Cloneable{
     }
 
     public void featuresSubsetsCSV() throws IOException {
-        int feature_size = this.instances.get(0).getN_features();
+        int feature_size = this.instances.get(0).bin_features.length;
         for (int f = feature_size / 10; f < feature_size; f += feature_size / 10) {
             this.features_amount = f;
             this.toCsv();
@@ -230,7 +227,7 @@ public class Dataset implements Cloneable{
         int n_labels = this.instances.get(0).runtimes.length;
         Dataset clone = this.clone();
 
-        for (int n = n_labels / 10; n < n_labels; n += n_labels / 10 ) {
+        for (int n = n_labels / 10; n < n_labels; n += n_labels / 10) {
             // rewrite all instances to only use n labels
             assert clone != null;
             for (Instance i : clone.instances) {
@@ -272,5 +269,49 @@ public class Dataset implements Cloneable{
         fileWriter.write("Num labels: " + this.numLabels());
         fileWriter.newLine();
         fileWriter.close();
+    }
+
+    public void removeSames() {
+        // for each feature
+        // get values of feature over each instance
+        // if 2 are the same, remove one, remake bin_features
+        Map<Integer, List<Double>> f_values = new HashMap<>();
+        int n_features;
+        {
+            Instance example = this.instances.get(0);
+            n_features = example.bin_features.length;
+
+            for (int f = 0; f < n_features; f++) {
+                List<Double> values = new ArrayList<>(instances.size());
+                for (Instance i : this.instances) {
+                    double v = i.bin_features[f];
+                    values.add(v);
+                }
+                f_values.put(f, values);
+            }
+        }
+        List<Integer> to_remove = new ArrayList<>();
+        for (int f1 = 0; f1 < n_features; f1++) {
+            if (to_remove.contains(f1)) continue;
+            for (int f2 = f1 + 1; f2 < n_features; f2++) {
+                if (f_values.get(f1).equals(f_values.get(f2))) {
+                    to_remove.add(f2);
+                }
+            }
+        }
+
+        if (to_remove.isEmpty()) return;
+        System.out.println("removing " + to_remove.size() + " features");
+
+        for (Instance i : instances) {
+            int idx = 0;
+            double[] bin_f = new double[i.bin_features.length - to_remove.size()];
+            for (int f = 0; f < n_features; f++) {
+                if (to_remove.contains(f)) continue;
+                bin_f[idx++] = i.bin_features[f];
+            }
+            i.bin_features = bin_f;
+        }
+
     }
 }

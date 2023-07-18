@@ -350,6 +350,7 @@ public class ASLib {
                 set.setN_bins(b);
                 set.writeStats();
                 set.binarizeAll(b);
+                set.removeSames();
 
                 //set.toCsv();
                 if (to_subdivide_instances.contains(scenario.DIRECTORY)) {
