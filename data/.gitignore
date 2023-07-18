@@ -1,0 +1,7 @@
+exp2/subset-*
+
+experiments/venv
+experiments/tmp
+experiments/experiment
+experiments/*.json
+experiments/*.csv

@@ -1,0 +1,6 @@
+some datasets
+
+2 datasets * 8 depths * 5 bins * 1 hours * 10 CV -> 800 hours
+
+ASP-POTASSCO
+SAT20-MAIN

@@ -1,0 +1,4 @@
+run all datasets in 3 folders
+all are 2 bins, depth 4
+features, instances -> ASP-POTASSCO
+labels -> SAT18-EXP

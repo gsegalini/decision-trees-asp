@@ -1,0 +1,1369 @@
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-PMS-2016/2-bins/9-cv/MAXSAT-PMS-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-PMS-2016/2-bins/9-cv/MAXSAT-PMS-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 19
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-PMS-2016/2-bins/MAXSAT-PMS-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015/2-bins/9-cv/GRAPHS-2015-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015/2-bins/9-cv/GRAPHS-2015-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 7
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015/2-bins/GRAPHS-2015-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/5-cv/MAXSAT12-PMS-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/5-cv/MAXSAT12-PMS-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 6
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/MAXSAT12-PMS-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/2-cv/SAT11-INDU-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/2-cv/SAT11-INDU-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 18
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/SAT11-INDU-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/1-cv/SAT16-MAIN-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/1-cv/SAT16-MAIN-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 25
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/SAT16-MAIN-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/4-cv/MAXSAT12-PMS-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/4-cv/MAXSAT12-PMS-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 6
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/MAXSAT12-PMS-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/10-cv/CSP-Minizinc-Time-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/10-cv/CSP-Minizinc-Time-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 20
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/CSP-Minizinc-Time-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/1-cv/SAT18-EXP-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/1-cv/SAT18-EXP-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 37
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/SAT18-EXP-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/7-cv/BNSL-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/7-cv/BNSL-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 8
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/BNSL-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-INDU/2-bins/4-cv/SAT12-INDU-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-INDU/2-bins/4-cv/SAT12-INDU-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 31
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-INDU/2-bins/SAT12-INDU-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/4-cv/BNSL-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/4-cv/BNSL-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 8
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/BNSL-2016/2-bins/BNSL-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/4-cv/SAT12-RAND-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/4-cv/SAT12-RAND-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 31
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/SAT12-RAND-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/5-cv/SAT03-16_INDU-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/5-cv/SAT03-16_INDU-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 10
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/SAT03-16_INDU-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/6-cv/PROTEUS-2014-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/6-cv/PROTEUS-2014-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 22
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/PROTEUS-2014-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT20-MAIN/2-bins/2-cv/SAT20-MAIN-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT20-MAIN/2-bins/2-cv/SAT20-MAIN-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 67
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT20-MAIN/2-bins/SAT20-MAIN-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/9-cv/SAT12-HAND-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/9-cv/SAT12-HAND-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 31
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/SAT12-HAND-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/QBF-2016/2-bins/7-cv/QBF-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/QBF-2016/2-bins/7-cv/QBF-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 24
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/QBF-2016/2-bins/QBF-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/TSP-LION2015/2-bins/3-cv/TSP-LION2015-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/TSP-LION2015/2-bins/3-cv/TSP-LION2015-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 40
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/TSP-LION2015/2-bins/TSP-LION2015-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/4-cv/SAT12-HAND-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/4-cv/SAT12-HAND-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 31
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-HAND/2-bins/SAT12-HAND-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND/2-bins/3-cv/SAT11-RAND-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND/2-bins/3-cv/SAT11-RAND-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 9
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND/2-bins/SAT11-RAND-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/5-cv/PROTEUS-2014-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/5-cv/PROTEUS-2014-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 22
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/PROTEUS-2014-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/1-cv/MAXSAT12-PMS-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/1-cv/MAXSAT12-PMS-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 6
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT12-PMS/2-bins/MAXSAT12-PMS-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/7-cv/SAT12-RAND-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/7-cv/SAT12-RAND-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 31
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT12-RAND/2-bins/SAT12-RAND-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/9-cv/SAT03-16_INDU-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/9-cv/SAT03-16_INDU-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 10
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT03-16_INDU-ALGO/2-bins/SAT03-16_INDU-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/8-cv/SAT16-MAIN-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/8-cv/SAT16-MAIN-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 25
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT16-MAIN/2-bins/SAT16-MAIN-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/1-cv/PROTEUS-2014-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/1-cv/PROTEUS-2014-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 22
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/PROTEUS-2014-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/7-cv/SAT11-INDU-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/7-cv/SAT11-INDU-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 18
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-INDU-ALGO/2-bins/SAT11-INDU-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/5-cv/MAXSAT-WPMS-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/5-cv/MAXSAT-WPMS-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 18
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/MAXSAT-WPMS-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/8-cv/CSP-Minizinc-Time-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/8-cv/CSP-Minizinc-Time-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 20
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/CSP-Minizinc-Time-2016/2-bins/CSP-Minizinc-Time-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/2-cv/SAT18-EXP-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/2-cv/SAT18-EXP-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 37
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT18-EXP/2-bins/SAT18-EXP-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/3-cv/PROTEUS-2014-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/3-cv/PROTEUS-2014-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 22
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/PROTEUS-2014-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-HAND-ALGO/2-bins/2-cv/SAT11-HAND-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-HAND-ALGO/2-bins/2-cv/SAT11-HAND-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 15
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-HAND-ALGO/2-bins/SAT11-HAND-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015-ALGO/2-bins/10-cv/GRAPHS-2015-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015-ALGO/2-bins/10-cv/GRAPHS-2015-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 4
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/GRAPHS-2015-ALGO/2-bins/GRAPHS-2015-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/2-cv/PROTEUS-2014-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/2-cv/PROTEUS-2014-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 22
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/PROTEUS-2014/2-bins/PROTEUS-2014-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND-ALGO/2-bins/3-cv/SAT11-RAND-ALGO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND-ALGO/2-bins/3-cv/SAT11-RAND-ALGO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 9
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/SAT11-RAND-ALGO/2-bins/SAT11-RAND-ALGO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/ASP-POTASSCO/2-bins/5-cv/ASP-POTASSCO-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/ASP-POTASSCO/2-bins/5-cv/ASP-POTASSCO-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 11
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/ASP-POTASSCO/2-bins/ASP-POTASSCO-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
+timeout: the monitored command dumped core
+-6 Main Parameters
+	-task = algorithm-selection
+	-mode = hyper
+	-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/3-cv/MAXSAT-WPMS-2016-2-bins.txt
+	-test-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/3-cv/MAXSAT-WPMS-2016-2-bins-test.txt
+	-time = 3610
+	-max-depth = 0
+	-max-num-nodes = 0
+	-max-num-features = 2147483647
+	-num-instances = 2147483647
+	-num-labels = 18
+	-verbose = 1
+	-all-trees = 0
+	-train-test-split = 0
+	-stratify = 1
+	-min-leaf-node-size = 1
+Algorithmic Parameters
+	-similarity-lower-bound = 1
+	-use-upper-bound = 1
+	-use-lower-bound = 1
+	-feature-ordering = in-order
+	-random-seed = 4
+	-use-branch-caching = 1
+	-use-dataset-caching = 0
+	-duplicate-factor = 1
+Objective Parameters
+	-cost-file = /home/giulio/Documents/Projects/decision-trees-asp/data/experiments/../../data-preparation/aslib_data-master/MAXSAT-WPMS-2016/2-bins/MAXSAT-WPMS-2016-2-bins-costs.txt
+	-ppg-teacher-method = DM
+	-discrimination-limit = 1
+	-cost-complexity = 0.01
+	-confidence-coefficient = 0.25
+	-beta = 0
+	-tau = 0
+Optimal tree computation started!
+514 combinations to try
+
