@@ -3,27 +3,20 @@ require(aslib)
 
 output = list()
 
-compute_models <- function(name) {
-
-	sc = invisible(getCosealASScenario(name))
-	data = convertToLlama(sc)
-	folds =	convertToLlamaCVFolds(sc)
-	
-	model_j48 = classify(makeLearner("classif.J48"), folds)
-	model_random_forests = classify(makeLearner("classif.cforest"), folds)
-	model_class_rpart = classify(makeLearner("classif.rpart"), folds)
-	model_regr_rpart = regression(makeLearner("regr.rpart"), folds)
-# 	model_regr_random_forests = regression(makeLearner("regr.randomForest"), folds)
-	newList = list("data" = data, "folds" = folds, "j48" = model_j48, "rf" = model_random_forests, "rpart_c" = model_class_rpart, "rpart_r" = model_regr_rpart) #, "rf_r" = model_regr_random_forests)
-	
-	return(newList)
-	
+compute_model <- function(model_name, folds) {
+	learner = makeLearner(model_name)
+	type <- strsplit(model_name, '.', fixed = TRUE)[[1]][1]
+	if (type == "regr") {
+		return(regression(learner, folds))
+	} else {
+		classify(learner, folds)
+	}
 }
 
 
 print_info <- function(data, folds, model, name) {
 	
-	s = paste(name, mean(misclassificationPenalties(data, vbs)), sep=",")
+	s = paste("", mean(misclassificationPenalties(data, vbs)), sep="")
 	s = paste(s, mean(misclassificationPenalties(folds, model)), sep=",")
 	return(paste(s, mean(misclassificationPenalties(data, singleBest)), sep=","))
 
@@ -31,24 +24,40 @@ print_info <- function(data, folds, model, name) {
 
 scenarios = readLines("../data-preparation/aslib_data-master/names.txt") 
 
-# scenarios = list("ASP-POTASSCO", "CSP-Minizinc-Time-2016")
+# scenarios = list("GLUHACK-2018-ALGO")
 
-models = list("j48", "rf", "rpart_c", "rpart_r")
+models = list("classif.J48", "classif.cforest", "classif.rpart", "regr.rpart", "regr.cforest")
+
 output <- append(output, "scenario,model,vbs,mcp,singleb\n")
 
 for (name in scenarios) {
-	l = compute_models(name)
+	sc = invisible(getCosealASScenario(name))
+	data = convertToLlama(sc)
+	folds =	convertToLlamaCVFolds(sc)
 	
-	data = l$data
-
-	folds = l$folds
 	for (model in models) {
-		output <- (append(output, name))
-		output <- (append(output, ","))
-		output <- (append(output, print_info(data, folds, l[[model]], model)))
-		output <- (append(output, "\n"))
+		values = list()
+		values <- append(values, name)
+		values <- append(values, model)
+		rest <- tryCatch(
+			{
+				m = compute_model(model, folds)
+				new_line <- print_info(data, folds, m, model)
+				rest <- (paste(new_line, "\n", sep=""))
+			}, 
+			error=function(e){
+				# cat("ERROR :",conditionMessage(e), " on model: ", model, " and scenario: ", name, "\n")
+				# values <- append(values, "-1,-1,-1")
+				return("-1,-1,-1\n")
+			}
+		)
+
+		values <- append(values, rest)
+		line <- paste(values, collapse=",")
+		output <- append(output, line)
 
 	}
+
 }
 
 for (l in output) {

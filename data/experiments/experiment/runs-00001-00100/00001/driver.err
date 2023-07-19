@@ -1,9 +1,0 @@
-Traceback (most recent call last):
-  File "/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/experiment/runs-00001-00100/00001/run", line 21, in <module>
-    Call(['/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/venv/bin/python', '/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/sync_runner.py', '--in-file', '/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/tmp/chunks/sync_runner_0.json', '--out-file', '/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/tmp/results/sync_runner_0.csv'], hard_stderr_limit=1048576, hard_stdout_limit=1048576, memory_limit=None, name='sync_runner', soft_stderr_limit=64, soft_stdout_limit=1024, time_limit=None, **redirects).wait()
-  File "/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/venv/lib/python3.11/site-packages/lab/calls/call.py", line 192, in wait
-    self._redirect_streams()
-  File "/home/giulio/Documents/Projects/decision-trees-asp/data/experiments/venv/lib/python3.11/site-packages/lab/calls/call.py", line 145, in _redirect_streams
-    ready = poller.poll()
-            ^^^^^^^^^^^^^
-KeyboardInterrupt
