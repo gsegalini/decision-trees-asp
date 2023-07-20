@@ -24,10 +24,12 @@ public class ASLib {
     public static final List<String> to_subdivide_instances = List.of("ASP-POTASSCO");
     public static final List<String> to_subdivide_features = List.of("ASP-POTASSCO");
     public static final List<String> to_subdivide_labels = List.of("SAT18-EXP");
+    public static final boolean INCLUDE_NOT_SOLVED = true;
 
     public ASLib(String DIRECTORY) {
         this.DIRECTORY = DIRECTORY;
     }
+
 
     private List<String> readRuntimes(AlgorithmCollection collection, Dataset set) throws IOException {
         List<String> bench_names = new ArrayList<>();
@@ -80,9 +82,11 @@ public class ASLib {
 
         for (ASLibInstance instance : instances.values()) {
             instance.convertList();
-            if (!instance.allTimeouts()) {
+            if (INCLUDE_NOT_SOLVED || !instance.allTimeouts()) {
                 bench_names.add(instance.name);
                 set.addInstance(instance);
+            } else {
+                System.out.println("removed instance: " + instance.name + " from scenario: " + this.DIRECTORY);
             }
         }
 
@@ -354,7 +358,6 @@ public class ASLib {
 
             // set.stats();
             set.subtractBest();
-
             for (int b : bin_values) {
                 set.setN_bins(b);
                 set.writeStats();
