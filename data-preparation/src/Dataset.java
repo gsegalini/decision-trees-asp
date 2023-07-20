@@ -268,6 +268,9 @@ public class Dataset implements Cloneable {
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
         fileWriter.write("Num labels: " + this.numLabels());
         fileWriter.newLine();
+        fileWriter.write("Total number of instances: " + this.instances.size() + ". This needs to be used to compute the average MCP by doing:\n");
+        fileWriter.write("SUM metric_test for all CVs / n_instances");
+        fileWriter.newLine();
         fileWriter.close();
     }
 
