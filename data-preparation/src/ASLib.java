@@ -46,8 +46,15 @@ public class ASLib {
                     String inst_name = splitted[attributes.get("instance_id")];
                     String alg = splitted[attributes.get("algorithm")];
                     double runtime = Double.parseDouble(splitted[attributes.get(this.metric)]);
+                    int repetition = Integer.parseInt(splitted[attributes.get("repetition")]);
+
+                    if (repetition > 1) {
+                        continue;
+                    }
+
+
                     String status = splitted[attributes.get("runstatus")];
-                    // if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10;
+                    if (!this.metric.equalsIgnoreCase("PAR10") && !status.equals("ok")) runtime *= 10; // make everything PAR10
                     if (!instances.containsKey(inst_name)) {
                         ASLibInstance tmp = new ASLibInstance();
                         tmp.name = inst_name;
