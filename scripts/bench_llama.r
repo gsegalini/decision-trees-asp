@@ -16,15 +16,15 @@ compute_model <- function(model_name, folds) {
 
 print_info <- function(data, folds, model, name) {
 	
-	s = paste("", mean(misclassificationPenalties(data, vbs)), sep="")
-	s = paste(s, mean(misclassificationPenalties(folds, model)), sep=",")
-	return(paste(s, mean(misclassificationPenalties(data, singleBest)), sep=","))
+	s = paste("", mean(parscores(data, vbs)), sep="")
+	s = paste(s, mean(parscores(folds, model)), sep=",")
+	return(paste(s, mean(parscores(data, singleBest)), sep=","))
 
 }
 
-scenarios = readLines("../data-preparation/aslib_data-master/names.txt") 
+scenarios = readLines("./names.txt") 
 
-# scenarios = list("GLUHACK-2018-ALGO")
+# scenarios = list("CSP-Minizinc-Time-2016")
 
 models = list("classif.J48", "classif.cforest", "classif.rpart", "regr.rpart", "regr.cforest")
 
