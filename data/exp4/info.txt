@@ -1,3 +1,19 @@
 All datasets, fix depth and bins from previous experiment
+max-depth = 3
+max-nodes = 7
 
 check streed2 vs llama (R)
+
+streed computes MCP based on what the scenario presented. this means that all scenarios were converted to PAR10 and llama returned the PAR10 version of the three values explained below.
+
+to compare fairly we need to take into account what llama returns:
+virtual best
+single best, which is the PAR10 in case we would choose the single best algorithm overall
+Mcp, the PAR10 if we use the model to choose algorithms. The column is called MCP for legacy reasons, but the value is actually PAR10
+This score is the average over all instances, streed returns the sum of the ones that were in the test set for a particular CV.
+
+To fairly compare, we should compare the MCP obtained from the averaged value from llama to the sum of the values over all CVs from streed, divided by the total size of the dataset, which can be found in the _info.txt file for each scenario.
+
+To obtain the MCP from llama PAR10 it should be sufficient to subtract the vbs PAR10 score from the PAR10 score of the model.
+
+Both streed and llama could fail/timeout on specific scenarios with some models/depths/binarization. These rows presents -1 as values and should be dealt with.

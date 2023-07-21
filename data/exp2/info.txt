@@ -2,3 +2,8 @@ run all datasets in 3 folders
 all are 2 bins, depth 4
 features, instances -> ASP-POTASSCO
 labels -> SAT18-EXP
+
+the experiments were run fixing values except the ones that were tested against.
+depth is 3 for d3 and 4 for d4
+
+these were run computing mcp, but we are interested in runtime.

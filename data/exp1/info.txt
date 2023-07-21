@@ -1,3 +1,5 @@
-run both on streed and mip-boas(gurobi)
+The file shows runtime and other values for these datasets over the MIP model and streed.
 
-measure runtime
+The metric values are the same in the csv, but were slightly different as streed now uses a different regularization strategy (relative beta/tau vs absolute values for Boas).
+
+The trained trees were actually the same.
