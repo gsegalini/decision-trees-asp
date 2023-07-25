@@ -59,6 +59,7 @@ public class Dataset implements Cloneable {
                 ASLibInstance tmp = (ASLibInstance) inst;
                 boolean in = filter.contains(tmp.name);
                 if (whitelist ^ in) continue;
+                if (!whitelist && inst.allTimeouts()) continue; // remove useless instances from train
             }
             fileWriter.write(inst.toString(this.features_amount));
             count++;
@@ -266,7 +267,8 @@ public class Dataset implements Cloneable {
         File file = new File(this.directory() + this.filename() + "_info.txt");
         file.getParentFile().mkdirs();
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
-        fileWriter.write("Num labels: " + this.numLabels());
+        int n_labels = this.numLabels();
+        fileWriter.write( "Num labels: " + n_labels);
         fileWriter.newLine();
         fileWriter.write("Total number of instances: " + this.instances.size() + ". This needs to be used to compute the average MCP by doing:\n");
         fileWriter.write("SUM metric_test for all CVs / n_instances");
@@ -274,7 +276,7 @@ public class Dataset implements Cloneable {
         fileWriter.close();
     }
 
-    public List<Integer> removeSames() {
+    public Set<Integer> removeSames() {
         // for each feature
         // get values of feature over each instance
         // if 2 are the same, remove one, remake bin_features
@@ -293,7 +295,7 @@ public class Dataset implements Cloneable {
                 f_values.put(f, values);
             }
         }
-        List<Integer> to_remove = new ArrayList<>();
+        Set<Integer> to_remove = new HashSet<>();
         for (int f1 = 0; f1 < n_features; f1++) {
             if (to_remove.contains(f1)) continue;
             for (int f2 = f1 + 1; f2 < n_features; f2++) {

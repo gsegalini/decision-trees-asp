@@ -1,10 +1,7 @@
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ASLib {
 
@@ -236,7 +233,7 @@ public class ASLib {
     }
 
 
-    private void writeFeatureCosts(int bins, List<Integer> removed) throws IOException {
+    private void writeFeatureCosts(int bins, Set<Integer> removed) throws IOException {
         File file = new File(DIRECTORY + "/" + bins + "-bins/" + DIRECTORY + "-" + bins + "-bins-costs.txt");
         file.getParentFile().mkdirs();
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
@@ -362,7 +359,7 @@ public class ASLib {
                 set.setN_bins(b);
                 set.writeStats();
                 set.binarizeAll(b);
-                List<Integer> removed = set.removeSames();
+                Set<Integer> removed = set.removeSames();
                 if (costs) scenario.writeFeatureCosts(b, removed);
 
 
