@@ -16,15 +16,15 @@ compute_model <- function(model_name, folds) {
 
 print_info <- function(data, folds, model, name) {
 	
-	s = paste("", mean(parscores(data, vbs)), sep="")
-	s = paste(s, mean(parscores(folds, model)), sep=",")
-	return(paste(s, mean(parscores(data, singleBest)), sep=","))
+	s = paste("", mean(parscores(data, vbs, addCosts=TRUE)), sep="")
+	s = paste(s, mean(parscores(folds, model, addCosts=TRUE)), sep=",")
+	return(paste(s, mean(parscores(data, singleBest, addCosts=TRUE)), sep=","))
 
 }
 
-scenarios = readLines("./names.txt") 
+# scenarios = readLines("./names.txt") 
 
-# scenarios = list("CSP-Minizinc-Time-2016")
+scenarios = list("ASP-POTASSCO")
 
 models = list("classif.J48", "classif.cforest", "classif.rpart", "regr.rpart", "regr.cforest")
 
