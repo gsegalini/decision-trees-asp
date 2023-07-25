@@ -59,7 +59,7 @@ public class Dataset implements Cloneable {
                 ASLibInstance tmp = (ASLibInstance) inst;
                 boolean in = filter.contains(tmp.name);
                 if (whitelist ^ in) continue;
-                if (!whitelist && inst.allTimeouts()) continue; // remove useless instances from train
+                if (!whitelist && inst.all0) continue; // remove useless instances from train
             }
             fileWriter.write(inst.toString(this.features_amount));
             count++;
