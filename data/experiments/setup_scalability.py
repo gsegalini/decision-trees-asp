@@ -25,7 +25,7 @@ bins = [2, 3, 5, 7, 10]
 # regularisations = [(0, 0), (0.001, 0.001), (0.01, 0.001), (0.001, 0.01), (0.01, 0.01)]
 regularisations = [(0, 0)]
 
-
+repetitions = 5
 def generate_experiments2():
     dataset_folders = ["subset-features", "subset-instances", "subset-labels"]
     experiments = []
@@ -47,21 +47,21 @@ def generate_experiments2():
                 n_labels = labels[type]
                 n_instances = int(re.findall(r'\d+-size', dataset)[0][:-5])
                 extra = f"{n_instances}-instances"
-
-            streed = {
-                "method": "streed",
-                "timeout": 3600,
-                "depth": depth,
-                "train_data": os.path.join(path, dataset),
-                "test_data": "",
-                "beta": 0,
-                "tau": 0,
-                "cost_file": "",
-                "num_labels": n_labels,
-                "extra_info": extra,
-                "mode": "direct"
-            }
-            experiments.append(streed)
+            for _ in range(repetitions):
+                streed = {
+                    "method": "streed",
+                    "timeout": 7200,
+                    "depth": depth,
+                    "train_data": os.path.join(path, dataset),
+                    "test_data": "",
+                    "beta": 0,
+                    "tau": 0,
+                    "cost_file": "",
+                    "num_labels": n_labels,
+                    "extra_info": extra,
+                    "mode": "direct"
+                }
+                experiments.append(streed)
     random.shuffle(experiments)
     return experiments
 
@@ -71,26 +71,32 @@ def generate_experiments1():
     experiments = []
     for dataset in dataset_files:
         for depth in range(1, 7):
-            streed = {
-                "method": "streed",
-                "timeout": 3600,
-                "depth": depth,
-                "train_data": os.path.join(SCRIPT_DIR / ".." / "exp1", dataset),
-                "test_data": "",
-                "beta": 0.01,
-                "tau": 0.02,
-                "cost_file": "",
-                "num_labels": labels[dataset],
-                "mode": "direct"
-            }
-            experiments.append(streed)
+            for _ in range(repetitions):
+                streed = {
+                    "method": "streed",
+                    "timeout": 3600,
+                    "depth": depth,
+                    "train_data": os.path.join(SCRIPT_DIR / ".." / "exp1", dataset),
+                    "test_data": "",
+                    "beta": 0.01,
+                    "tau": 0.02,
+                    "cost_file": "",
+                    "num_labels": labels[dataset],
+                    "mode": "direct"
+                }
+                experiments.append(streed)
     random.shuffle(experiments)
     return experiments
 
 
 def generate_experiments3():
     experiments = []
-    dataset_files = ["ASP-POTASSCO", "SAT20-MAIN"]
+    dataset_files = [
+        "ASP-POTASSCO",
+        "SAT20-MAIN"
+    ]
+
+    timeouts = [(4,10),(5,2),(4,3),(5,3),(5,5),(4,5),(4,7),(5,7),(5,10)]
 
     for dataset in dataset_files:
         base_folder = os.path.join(aslib_base, dataset)
@@ -109,7 +115,9 @@ def generate_experiments3():
                 test_file = os.path.join(cv_folder, (dataset + "-{}-bins-test.txt").format(binarization))
                 cost_file = os.path.join(bin_folder, (dataset + "-{}-bins-costs.txt").format(binarization))
                 cost_file = cost_file if os.path.isfile(cost_file) else ""
-                for depth in range(0, 8):
+                for depth in range(0, 6):
+                    if (depth, binarization) in timeouts:
+                        continue
                     for (beta, tau) in regularisations:
                         streed = {
                             "method": "streed",
@@ -137,9 +145,11 @@ def generate_experiments4():
     with open(names) as datasets_file:
         dataset_files.extend([f.strip() for f in datasets_file.readlines()])
 
+    # dataset_files = ["PROTEUS-2014", "TSP-LION2015", "TSP-LION2015-ALGO", "SAT03-16_INDU", "SAT03-16_INDU-ALGO"]
+
     for dataset in dataset_files:
         base_folder = os.path.join(aslib_base, dataset)
-        binarization = 2  # fill from exp3
+        binarization = 3  # fill from exp3
         bin_folder = os.path.join(base_folder, f"{binarization}-bins")
         info_file = os.path.join(bin_folder, (dataset + "-{}-bins_info.txt").format(binarization))
 
@@ -154,11 +164,11 @@ def generate_experiments4():
             test_file = os.path.join(cv_folder, (dataset + "-{}-bins-test.txt").format(binarization))
             cost_file = os.path.join(bin_folder, (dataset + "-{}-bins-costs.txt").format(binarization))
             cost_file = cost_file if os.path.isfile(cost_file) else ""
-            depth = 0  # fill from exp 3
+            depth = 3  # fill from exp 3
             (beta, tau) = (0, 0)  # fill from exp3 maybe
             streed = {
                 "method": "streed",
-                "timeout": 3600,
+                "timeout": 10800,
                 "depth": depth,
                 "train_data": csv_path,
                 "test_data": test_file,
@@ -178,7 +188,7 @@ def generate_experiments4():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="Setup experiments")
     parser.add_argument("--file", default=str(SCRIPT_DIR / "experiments.json"))
-    parser.add_argument("--exp-number", default=3)
+    parser.add_argument("--exp-number", default=4)
     args = parser.parse_args()
 
     n = int(args.exp_number)
