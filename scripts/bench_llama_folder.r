@@ -33,6 +33,7 @@ output <- append(output, "scenario,model,vbs,mcp,singleb\n")
 for (name in scenarios) {
 	path = paste("../data-preparation/aslib_data-master/", name, sep = "")
 	sc = parseASScenario(path)
+	sc$feature.values = na.omit(sc$feature.values)
 	data = convertToLlama(sc)
 	folds =	convertToLlamaCVFolds(sc)
 	

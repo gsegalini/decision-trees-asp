@@ -32,6 +32,7 @@ output <- append(output, "scenario,model,vbs,mcp,singleb\n")
 
 for (name in scenarios) {
 	sc = invisible(getCosealASScenario(name))
+	sc$feature.values = na.omit(sc$feature.values)
 	data = convertToLlama(sc)
 	folds =	convertToLlamaCVFolds(sc)
 	

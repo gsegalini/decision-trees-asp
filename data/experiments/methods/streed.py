@@ -80,7 +80,7 @@ def run_streed(
                 str(tau),
                 "-cost-file",
                 cost_file,
-                "-num-labels",
+                "-num-extra-cols",
                 str(num_labels),
                 "-mode",
                 "hyper" if hyper else "direct"

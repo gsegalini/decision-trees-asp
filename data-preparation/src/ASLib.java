@@ -98,6 +98,7 @@ public class ASLib {
         Map<String, Integer> attributes = new HashMap<>();
         boolean data_started = false;
         int id = 0;
+        int count_failed = 0;
         while ((strCurrentLine = objReader.readLine()) != null) {
 
             if (!strCurrentLine.startsWith("%")) {
@@ -123,6 +124,7 @@ public class ASLib {
                             if (splitted[i].equals("?")) {
                                 // remove this instance
                                 set.removeInstance(instance);
+                                ++count_failed;
                                 break;
 
                             } else {
@@ -144,7 +146,7 @@ public class ASLib {
             }
 
         }
-
+        System.out.println("removed " + count_failed + " flawed instances");
     }
 
 

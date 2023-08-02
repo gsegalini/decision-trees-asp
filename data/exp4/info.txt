@@ -1,6 +1,9 @@
 All datasets, fix depth and bins from previous experiment
 max-depth = 3
 max-nodes = 7
+bins = 5, except:
+SAT03-16_INDU and SAT03-16_INDU-ALGO with:
+bins = 3
 
 check streed2 vs llama (R)
 
@@ -17,3 +20,9 @@ To fairly compare, we should compare the MCP obtained from the averaged value fr
 To obtain the MCP from llama PAR10 it should be sufficient to subtract the vbs PAR10 score from the PAR10 score of the model.
 
 Both streed and llama could fail/timeout on specific scenarios with some models/depths/binarization. These rows presents -1 as values and should be dealt with.
+
+results are ready to be used in exp4-results.csv, they are shown relative to the best MCP from llama.
+
+In both methods we first remove instances that do not have some feature values, but it's important to remember that some models in llama can technically work around it, while streed alone can not.
+
+SAT20-MAIN is cursed, it out of 400 instances only 24 have all features, this means we have 1 CV-fold (2-cv) which has no test instances. I think the best thing to do is ignore it when doing the comparison between streed and llama.

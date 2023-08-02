@@ -3,7 +3,7 @@
 ASP-POTASSCO
 SAT20-MAIN
 
-From this experiment set, I decided to use 3-bins and max-depth 3 with hypersolving that would choose between all depths between 0 and 3 and all values of nodes possible for the specific depth.
+From this experiment set, I decided to use 5-bins and max-depth 3 with hypersolving that would choose between all depths between 0 and 3 and all values of nodes possible for the specific depth.
 
 We see how for the smaller dataset (SAT20-MAIN) the model overfits for higher depths.
 Depths > 3 may help for bigger datasets, but runtime does not scale well.
