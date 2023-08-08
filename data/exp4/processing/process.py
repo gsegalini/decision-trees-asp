@@ -73,9 +73,11 @@ for name in names:
 
         result_all.append(row_relative)
         for i, r in rows_llama.iterrows():
+            if r["mcp"] != 1.0:
+                continue
             result_all.append(r.to_dict())
 streed_new = pd.DataFrame(result)
 streed_new.to_csv("exp4-streed.csv", index=False)
 
 all_new = pd.DataFrame(result_all)
-all_new.to_csv("exp4-results.csv", index=False)
+all_new.to_csv("../exp4-results.csv", index=False)

@@ -30,7 +30,8 @@ def run_experiments(experiments: List):
                 e["tau"],
                 e["cost_file"],
                 e["num_labels"],
-                True if e["mode"] == "hyper" else False
+                True if e["mode"] == "hyper" else False,
+                e["bounds"]
             )
             result["method"] = f'streed'  # beta and tau are separate paremeters
 
@@ -38,6 +39,7 @@ def run_experiments(experiments: List):
         result["depth"] = e["depth"]
         result["beta"] = e["beta"]
         result["tau"] = e["tau"]
+        result["use_lower_bound"] = e["bounds"]
 
         # Save filename excuding .csv
         result["train_data"] = Path(e["train_data"]).name[:-4]
@@ -76,6 +78,7 @@ if __name__ == "__main__":
         "bins",
         "beta",
         "tau",
+        "use_lower_bound",
         "time",
         "metric_train",
         "metric_test",

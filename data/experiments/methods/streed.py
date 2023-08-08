@@ -53,7 +53,8 @@ def run_streed(
     tau,
     cost_file,
     num_labels,
-    hyper
+    hyper,
+    use_lower_bound,
 
 ):
     try:
@@ -83,7 +84,9 @@ def run_streed(
                 "-num-extra-cols",
                 str(num_labels),
                 "-mode",
-                "hyper" if hyper else "direct"
+                "hyper" if hyper else "direct",
+                "-use-lower-bound",
+                "1" if use_lower_bound else "0",
             ],
             timeout=timeout,
         )

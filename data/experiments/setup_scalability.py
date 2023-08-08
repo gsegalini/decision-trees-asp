@@ -26,6 +26,8 @@ bins = [2, 3, 5, 7, 10]
 regularisations = [(0, 0)]
 
 repetitions = 5
+
+
 def generate_experiments2():
     dataset_folders = ["subset-features", "subset-instances", "subset-labels"]
     experiments = []
@@ -59,9 +61,69 @@ def generate_experiments2():
                     "cost_file": "",
                     "num_labels": n_labels,
                     "extra_info": extra,
-                    "mode": "direct"
+                    "mode": "direct",
+                    "bounds": True
                 }
                 experiments.append(streed)
+    random.shuffle(experiments)
+    return experiments
+
+
+def generate_experiments2d1():
+    experiments = []
+    dataset_files = [
+        "ASP-POTASSCO",
+    ]
+
+    for dataset in dataset_files:
+        base_folder = os.path.join(aslib_base, dataset)
+        binarization = 5
+        bin_folder = os.path.join(base_folder, f"{binarization}-bins")
+        info_file = os.path.join(bin_folder, (dataset + "-{}-bins_info.txt").format(binarization))
+
+        if dataset not in labels:
+            with open(info_file) as info:
+                line = info.readline()
+                labels[dataset] = int(re.findall(r'\d+', line)[0])
+
+        for cv in range(1, 10 + 1):
+            cv_folder = os.path.join(bin_folder, f"{cv}-cv")
+            csv_path = os.path.join(cv_folder, (dataset + "-{}-bins.txt").format(binarization))
+            test_file = os.path.join(cv_folder, (dataset + "-{}-bins-test.txt").format(binarization))
+            cost_file = os.path.join(bin_folder, (dataset + "-{}-bins-costs.txt").format(binarization))
+            cost_file = cost_file if os.path.isfile(cost_file) else ""
+            for depth in range(0, 7):
+                for (beta, tau) in regularisations:
+                    streed = {
+                        "method": "streed",
+                        "timeout": 7200,
+                        "depth": depth,
+                        "train_data": csv_path,
+                        "test_data": test_file,
+                        "beta": beta,
+                        "tau": tau,
+                        "cost_file": cost_file,
+                        "num_labels": labels[dataset],
+                        "mode": "direct",
+                        "bounds": True
+                    }
+                    experiments.append(streed)
+                    streed = {
+                        "method": "streed",
+                        "timeout": 7200,
+                        "depth": depth,
+                        "train_data": csv_path,
+                        "test_data": test_file,
+                        "beta": beta,
+                        "tau": tau,
+                        "cost_file": cost_file,
+                        "num_labels": labels[dataset],
+                        "mode": "direct",
+                        "bounds": False
+                    }
+                    experiments.append(streed)
+
+    # Randomize experiment order so no methods gets an unfair advantage on average
     random.shuffle(experiments)
     return experiments
 
@@ -82,7 +144,8 @@ def generate_experiments1():
                     "tau": 0.02,
                     "cost_file": "",
                     "num_labels": labels[dataset],
-                    "mode": "direct"
+                    "mode": "direct",
+                    "bounds": True
                 }
                 experiments.append(streed)
     random.shuffle(experiments)
@@ -96,7 +159,7 @@ def generate_experiments3():
         "SAT20-MAIN"
     ]
 
-    timeouts = [(4,10),(5,2),(4,3),(5,3),(5,5),(4,5),(4,7),(5,7),(5,10)]
+    timeouts = [(4, 10), (5, 2), (4, 3), (5, 3), (5, 5), (4, 5), (4, 7), (5, 7), (5, 10)]
 
     for dataset in dataset_files:
         base_folder = os.path.join(aslib_base, dataset)
@@ -129,7 +192,8 @@ def generate_experiments3():
                             "tau": tau,
                             "cost_file": cost_file,
                             "num_labels": labels[dataset],
-                            "mode": "direct"
+                            "mode": "direct",
+                            "bounds": True
                         }
                         experiments.append(streed)
 
@@ -176,7 +240,8 @@ def generate_experiments4():
                 "tau": tau,
                 "cost_file": cost_file,
                 "num_labels": labels[dataset],
-                "mode": "hyper"
+                "mode": "hyper",
+                "bounds": True
             }
             experiments.append(streed)
 
@@ -191,7 +256,7 @@ if __name__ == "__main__":
     parser.add_argument("--exp-number", default=4)
     args = parser.parse_args()
 
-    n = int(args.exp_number)
+    n = float(args.exp_number)
     experiments = None
     if n == 3:
         experiments = generate_experiments3()
@@ -201,6 +266,8 @@ if __name__ == "__main__":
         experiments = generate_experiments4()
     elif n == 2:
         experiments = generate_experiments2()
+    elif n == 2.1:
+        experiments = generate_experiments2d1()
     else:
         print("invalid experiment {}".format(n))
         exit(-1)

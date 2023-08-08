@@ -121,10 +121,10 @@ def exp4():
     )
 
     ax.set(xlabel='Dataset',
-           ylabel='PAR10-MCP [s]',  # Runtime [s]
+           ylabel='Relative PAR10-MCP [s/s] (lower is better)',  # Runtime [s]
            title='Streed vs llama')  #
     ax.despine(left=True)
-    ax.set(ylim=(0, 3))
+    # ax.set(ylim=(0, 3))
 
     plt.savefig(base_folder + "exp4.svg")
 
