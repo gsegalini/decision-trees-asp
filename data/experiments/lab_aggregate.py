@@ -38,6 +38,7 @@ if __name__ == "__main__":
         "bins",
         "beta",
         "tau",
+        "use_lower_bound",
         "time",
         "metric_train",
         "metric_test",
